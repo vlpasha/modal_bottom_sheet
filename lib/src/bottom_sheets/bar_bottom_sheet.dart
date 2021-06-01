@@ -32,19 +32,29 @@ class BarBottomSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 12),
-            SafeArea(
-              bottom: false,
-              child: control ??
-                  Container(
-                    height: 6,
-                    width: 40,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6)),
-                  ),
-            ),
-            SizedBox(height: 8),
+            if (control == null) ...[
+              Container(
+                height: 12,
+                width: 40,
+                color: Color(0x0),
+              ),
+              SafeArea(
+                bottom: false,
+                child: Container(
+                  height: 6,
+                  width: 40,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(6)),
+                ),
+              ),
+              Container(
+                height: 8,
+                width: 40,
+                color: Color(0x0),
+              ),
+            ] else
+              control!,
             Flexible(
               flex: 1,
               fit: FlexFit.loose,
